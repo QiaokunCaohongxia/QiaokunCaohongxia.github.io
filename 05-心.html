@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 300px;
+      box-sizing : border-box;
+      margin: 200px auto;
+      position: relative;
+      transition : all .5s;
+      transform-origin : 0px 150px;
+    }
+    .box:before ,
+    .box:after {
+      content : "Qiao";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 300px;
+      background-color: red;
+      border-radius:100px 100px 0 0;
+      color: #fff;
+      text-align: center;
+      line-height:80px;
+    }
+    .box:after {
+      content: 'Cao';
+      left: -200px;
+      transform-origin : right bottom;
+      transform: rotate(45deg);
+    }
+    .box:before {
+      transform-origin : left bottom;
+      transform: rotate(-45deg);
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <button></button>
+  <script>
+    var box = document.querySelector('.box');
+    var btn = document.querySelector('button');
+    var flag = true;
+    btn.onclick = function (){
+      if(flag){
+        box.style.transform = 'scale(1.2)';//rotate(360deg)
+        flag = false;
+      }else{
+        box.style.transform = 'scale(1)';//rotate(0deg)
+        flag = true;
+      }
+    }
+    var timer = setInterval(function () {
+        btn.click();
+    },500)
+  </script>
+</body>
+</html>
